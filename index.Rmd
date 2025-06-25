@@ -201,7 +201,7 @@ detail_summary
 <br>
 
 klik tautan di bawah ini untuk mengakses via laman web :
-![link](https://siscanaila.github.io/test_1/)
+[link](https://siscanaila.github.io/test_1/)
 
 
 
