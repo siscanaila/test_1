@@ -1,0 +1,430 @@
+/* ===== Gaya Futuristik dan Elegan ===== */
+
+/* BODY STYLE */
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  background: #1a1a2e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== FUTURISTIC & ELEGANT STYLE FOR RMARKDOWN ===== */
+
+/* BODY STYLE */
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  background: #1a1a2e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===== TOC STYLES (FIXED) ===== */
+#TOC {
+  background-color: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  position: fixed;
+  top: 10%;
+  left: 20px;
+  width: 250px;
+  max-height: 80%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fff !important; /* Changed from dark to white */
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* REMOVE ALL WHITE BACKGROUNDS IN TOC */
+#TOC * {
+  background-color: transparent !important;
+}
+
+/* TOC LINKS */
+#TOC a {
+  display: block;
+  padding: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  background-color: #2a2a3b !important; /* Forced dark background */
+}
+
+#TOC a:hover {
+  background-color: #3498db !important;
+  color: #fff !important;
+}
+
+#TOC a.active {
+  background-color: #3498db !important;
+}
+
+/* TOC LEVELS */
+#TOC .toc-level-1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: transparent !important; /* Specific fix for DEFINISI */
+}
+
+#TOC .toc-level-2 {
+  font-size: 1.1rem;
+  margin-left: 20px;
+  display: none;
+}
+
+#TOC .toc-level-3 {
+  font-size: 1rem;
+  margin-left: 40px;
+  display: none;
+}
+
+/* HEADINGS */
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #1a1a2e;
+  color: #fff;
+  font-weight: bold;
+}
+
+td {
+  background-color: #2a2a3b;
+}
+
+/* CODE BLOCKS */
+pre {
+  background: #2a2a3b;
+  border-left: 4px solid #3498db;
+  padding: 1.2rem;
+  border-radius: 5px;
+}
+
+/* BLOCKQUOTES */
+blockquote {
+  background-color: #2a2a3b;
+  border-left: 10px solid #3498db;
+  padding: 1rem 20px;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+blockquote:before,
+blockquote:after {
+  color: #3498db;
+  font-size: 3rem;
+  position: absolute;
+}
+
+blockquote:before {
+  content: "“";
+  top: -10px;
+  left: 10px;
+}
+
+blockquote:after {
+  content: "”";
+  bottom: -10px;
+  right: 10px;
+}
+
+/* ===== TRANSPARENT TABLE-BASED TOC ===== */
+#TOC {
+  background-color: transparent !important;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  position: fixed;
+  top: 10%;
+  left: 20px;
+  width: 250px;
+  max-height: 80%;
+  color: #fff;
+  overflow-y: auto;
+  z-index: 1000;
+  display: table;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* TOC TABLE STYLING */
+#TOC table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background-color: transparent !important;
+}
+
+#TOC tr {
+  display: table-row;
+  background-color: transparent !important;
+}
+
+#TOC td {
+  display: table-cell;
+  padding: 12px;
+  vertical-align: middle;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* TOC LEVEL INDENTATION */
+#TOC .toc-level-1 td {
+  padding-left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#TOC .toc-level-2 td {
+  padding-left: 30px;
+  font-size: 1.1rem;
+}
+
+#TOC .toc-level-3 td {
+  padding-left: 50px;
+  font-size: 1rem;
+}
+
+/* TOC LINK STYLING */
+#TOC a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  background-color: transparent !important;
+}
+
+/* HOVER EFFECTS */
+#TOC tr:hover td {
+  background-color: rgba(52, 152, 219, 0.1) !important;
+}
+
+#TOC a:hover {
+  color: #3498db !important;
+}
+
+#TOC tr.active td {
+  background-color: rgba(52, 152, 219, 0.2) !important;
+}
+
+#TOC tr.active a {
+  color: #3498db !important;
+  font-weight: bold;
+}
+
+/* ===== SECTION STYLING ===== */
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* ===== TABLE STYLING ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background-color: #1a1a2e;
+  color: #fff;
+  font-weight: bold;
+}
+
+td {
+  background-color: #2a2a3b;
+}
+
+tr:hover {
+  background-color: #16213e;
+}
+
+/* ===== CODE BLOCK STYLING ===== */
+pre {
+  background: #2a2a3b;
+  border-left: 4px solid #3498db;
+  padding: 1.2rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+code {
+  color: #3498db;
+}
+
+/* === Styling untuk Blockquotes === */
+/* === Styling Blockquote Besar === */
+blockquote {
+  background-color: #2a2a3b; /* Background gelap */
+  border-left: 10px solid #3498db; /* Garis biru tebal di kiri */
+  padding: 1rem 20px; /* Padding lebih kecil agar tidak terlalu besar */
+  margin: 2rem 0; /* Margin atas dan bawah lebih kecil */
+  font-size: 1.5rem; /* Ukuran font lebih kecil agar tidak terlalu besar */
+  line-height: 1.6; /* Jarak antar baris lebih pas */
+  color: #fff; /* Teks berwarna putih */
+  border-radius: 12px; /* Membuat sudut lebih bulat */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan halus */
+}
+
+blockquote p {
+  font-size: 1.9 rem; /* Ukuran font untuk isi kutipan */
+  margin-bottom: 1rem; /* Memberikan jarak antar paragraf dalam blockquote */
+}
+
+blockquote:before {
+  /* Tanda kutip sebelum teks */
+  font-size: 3rem; /* Ukuran tanda kutip besar */
+  color: #3498db; /* Warna biru untuk tanda kutip */
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
+blockquote:after {
+  content: "”"; /* Tanda kutip setelah teks */
+  font-size: 3rem; /* Ukuran tanda kutip besar */
+  color: #3498db; /* Warna biru untuk tanda kutip */
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+}
+
+/* ===== DARK SYNTAX HIGHLIGHTING ===== */
+/* Background utama */
+pre,
+code {
+  background-color: #2a2a3b !important; /* Warna dasar gelap */
+  color: #f8f8f2 !important; /* Warna teks putih */
+  border-radius: 5px;
+  font-family: "Fira Code", monospace;
+}
+
+/* Border dan padding */
+pre {
+  border-left: 4px solid #3498db !important;
+  padding: 1em !important;
+  overflow-x: auto;
+}
+
+/* Warna sintaks RMarkdown dengan kontras lebih baik */
+.keyword {
+  color: #ff79c6; /* Pink: if, function, dll */
+  font-weight: bold;
+}
+
+.string {
+  color: #f1fa8c; /* Kuning: teks string */
+  background-color: rgba(0, 0, 0, 0.2); /* Sedikit background agar lebih jelas */
+}
+
+.number {
+  color: #ffa200; /* Ungu: angka */
+  font-weight: bold; /* Tebalkan agar lebih terlihat */
+}
+
+.comment {
+  color: #6272a4; /* Abu-abu: komentar */
+  font-style: italic;
+}
+
+.function.call {
+  color: #50fa7b; /* Hijau: fungsi() */
+}
+
+.operator {
+  color: #ff5555; /* Merah: operator */
+  font-weight: bold;
+}
+/* ===== PERBESAR FONT SINTRAKS ===== */
+pre,
+code {
+  font-size: 17px !important; /* Ukuran dasar (standar: 12-13px) */
+}
+
+/* Untuk blok kode (```) */
+pre {
+  font-size: 17px !important; /* Lebih besar dari inline code */
+  line-height: 1.5 !important; /* Jarak antar baris */
+}
+
+/* Untuk inline code (`...`) */
+code:not(pre code) {
+  font-size: 16px !important;
+  padding: 3px 6px !important;
+}
+
+/* Syntax highlighting */
+.keyword,
+.string,
+.number,
+.comment {
+  font-size: inherit !important; /* Ikuti ukuran parent */
+}
