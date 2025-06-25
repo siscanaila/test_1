@@ -1,0 +1,207 @@
+---
+title: "ANALISIS DATA INDEXING PADA R"
+author: "KELOMPOK 7 - KOMPUTASI STATISTIKA"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true  
+    toc_depth: 3 
+    toc_float: true  # Membuat TOC mengambang di sisi kiri
+    theme: cosmo  # Tema, sesuaikan dengan kebutuhan
+    number_section : true 
+    highlight: tango
+    css: style.css  # Menyertakan file CSS untuk styling
+    includes:
+      in_header:
+        - navbar.html  # Menyertakan file navbar.html
+---
+
+
+
+
+# . **Definisi**
+<div class=blockquotes>
+  > _Data indexing_ adalah proses menciptakan indeks atau **petunjuk lokasi data dalam dataset** yang besar. Index ini memungkinkan pengambilan data spesifik secara lebih cepat dan efisien tanpa perlu mencari seluruh dataset, sehingga kita bisa mengakses, mengambil, dan mengelola data dengan cepat dan efisien.
+  
+</div>
+
+Data indexing di R bisa dianalogikan dengan berbagai aktivitas sehari-hari di mana kita perlu mencari, mengakses, atau memilih sesuatu dari kumpulan yang lebih besar.Contohnya indexing seperti Mencari Buku di Perpustakaan.
+Jika ingin mencari buku "Laskar Pelangi" di perpustakaan:
+
+>1. Indexing Numerik: "Ambil buku di rak 3, baris ke-5" → buku[3,5]
+>2. Indexing Nama: "Cari buku berjudul Laskar Pelangi" → buku[buku$judul == "Laskar Pelangi", ] <br>
+>3. Logical Indexing: "Ambil semua buku genre Fiksi" → buku[buku$genre == "Fiksi", ]
+
+
+
+# .**Jenis-jenis Data Indexing**
+
+## **Positional indexing (Pengindeksan Posisi)**
+
+>Metode untuk mengakses data berdasarkan posisi atau urutan numerik dalam suatu struktur data, biasanya dimulai dari indeks pertama
+
+## **Label-based indexing**
+
+>Metode untuk mengakses data berdasarkan nama atau label dari baris atau kolom, bukan berdasarkan posisi numeriknya
+
+## **Boolean indexing**
+
+>Metode untuk mengakses data dengan menggunakan ekspresi logika atau kondisi boolean (True atau False). Hanya elemen yang memenuhi kondisi (True) yang diambil.
+
+## **Advanced indexing dengan dplyr**
+
+>Metode memilih, memfilter, atau menyusun data berdasarkan kondisi kompleks, kolom tertentu, atau posisi baris menggunakan fungsi-fungsi deklaratif seperti filter(), select(), slice(), dan arrange(). Operasi dilakukan dalam gaya piping (%>%) untuk alur yang lebih mudah dibaca
+
+# **Contoh**
+
+## **Positional Indexing (Pengindeks Posisi)**
+Misalkan ingin dilakukan positional indexing pada data set iris untuk melakukan hal ini digunakan syntax berupa : <br>
+
+### **Berdasarkan baris**
+_syntax_  ini akan menghasilkan data baris 1 sampai 3 semua kolom data set iris
+```{r}
+iris[1:3,]
+```
+
+
+
+### **Berdasarkan kolom**
+_syntax_ ini akan menghasilkan data semua baris dalam data iris kolom 1 sampai 3
+```{r}
+head(iris[,1:3])
+```
+
+ 
+   
+_Pada **Positional indexing** posisi nilai awal sebelum koma penunjukan posisi baris yang ingin diambil dan setelah kolom yang ingin diambil_
+
+## **Label Based Indexing**
+
+### **Mengambil seluruh kolom 'Sepal.Length' dengan $**
+```{r}
+head(iris$Sepal.Length)
+```
+
+### **Mengambil kolom 'Petal.Width' dengan [[ ]]**
+```{r}
+head(iris[["Petal.Width"]] )
+
+```
+
+### **Fleksibel dengan variabel**
+```{r}
+target_kolom <- "Species"
+head(iris[[target_kolom]])
+```
+
+
+## **Logical Indexing**
+### **Mengambil data dimana Species == "setosa" dan Sepal.Length > 5**
+```{r}
+
+head(iris[iris$Species == "setosa" & iris$Sepal.Length > 5, ])
+
+```
+### **Menggunakan which() untuk mengetahui posisi baris**
+Posisi baris dengan Petal.Width > 2
+```{r}
+head(which(iris$Petal.Width > 2))  
+```
+### **Mengambil kolom numerik saja**
+```{r}
+head(iris[sapply(iris, is.numeric)]) 
+```
+
+
+```{r echo=FALSE}
+which(iris$Petal.Width > 2)
+```
+
+## **Advanced Filtering**
+
+### **Filtering**
+
+**a.Filter iris dimana untuk memilih data dengan variabel tertentu**
+```{r}
+library(dplyr)
+setosa_besar <- iris %>%
+filter(Species == "setosa" ,
+      Sepal.Length > 5)
+setosa_besar
+```
+**b.Filter dengan %in% untuk  kategori yang lebih dari satu**
+```{r}
+spesies_terpilih <- c("setosa", "versicolor")
+hasil_filter <- iris %>%
+  filter(Species %in% spesies_terpilih,
+         Petal.Width >= 0.5)
+head(spesies_terpilih)
+
+```
+
+
+### **Select Kolom**
+**a.memilih kolom tertentu**
+```{r}
+kolom_dipilih <- iris %>%
+  select(Sepal.Length, Petal.Length, Species)
+head(kolom_dipilih)
+```
+
+ **b.Memilih kolom dengan pola dengan awalan nama tertentu**
+```{r}
+kolom_pola <- iris %>%
+  select(starts_with("Petal"), Species)  # Mengambil Petal.Length, Petal.Width, dan Species
+head(kolom_pola)
+```
+ 
+ **.Memilih kolom dengan pola dengan label tertentu  dalam data **
+```{r}
+kolom_contains <- iris %>%
+  select(contains("Width"))  # Mengambil Sepal.Width dan Petal.Width
+head(kolom_contains)
+```
+
+### **_Mutate_**
+
+```{r}
+iris_diolah <- iris %>%
+  mutate(
+    Sepal.Ratio = Sepal.Length/Sepal.Width,
+    Size.Category = case_when(
+      Sepal.Length > 6 ~ "Large",
+      Sepal.Length > 5 ~ "Medium",
+      TRUE ~ "Small"
+    )
+  )
+head(iris_diolah)
+```
+
+### **_Group By_**
+**a.Rata-rata panjang sepal per species**
+```{r}
+summary_spesies <- iris %>%
+  group_by(Species) %>%
+  summarise(
+    Avg_Sepal_Length = mean(Sepal.Length),
+    Median_Petal_Width = median(Petal.Width),
+    Count = n()
+  )
+summary_spesies
+```
+**b.Multiple aggregations**
+```{r}
+detail_summary <- iris %>%
+  group_by(Species) %>%
+  summarise(across(c(Sepal.Length, Petal.Width), 
+            list(mean = mean, sd = sd, max = max)))
+detail_summary
+```
+<br>
+<br>
+
+klik tautan di bawah ini untuk mengakses via laman web :
+![link ](https://siscanaila.github.io/test_1/)
+
+
+
